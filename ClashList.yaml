@@ -195,7 +195,7 @@ proxy-groups:
 
 # 规则部分（占位符，需你自行添加）
 rules:
-- DOMAIN-SUFFIX,baidu.com🔓 自我选择
+- DOMAIN-SUFFIX,baidu.com,🔓 自我选择
 - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
 - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
 - DOMAIN-SUFFIX,ip6-loopback,🎯 全球直连
