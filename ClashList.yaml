@@ -1,18 +1,18 @@
 proxy-providers:
   1.linzjian666 节点:
     type: http
-    path: ./proxy_provider/list.yml
+    path: ./proxy_provider/clash_meta.yaml
     url: https://gcore.jsdelivr.net/gh/linzjian666/chromego_extractor@main/outputs/clash_meta.yaml
     # interval: 21600  # 手动更新
     override:
-      additional-prefix: "节点组-1 |"
+      additional-prefix: "1-节点组|"
   2.chengaopan 节点:
     type: http
-    path: ./proxy_provider/clash_meta.yaml
+    path: ./proxy_provider/list.yml
     url: https://testingcf.jsdelivr.net/gh/chengaopan/AutoMergePublicNodes@master/list.yml
     # interval: 21600  # 手动更新
     override:
-      additional-prefix: "节点组-2 |"
+      additional-prefix: "2-节点组|"
 
 mixed-port: 7897
 allow-lan: true
