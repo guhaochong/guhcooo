@@ -91,16 +91,20 @@ proxies:
   protocol: udp
   up: 11 Mbps
   down: 55 Mbps
-- name: 🇬🇧 UK-vless | 3
+- client-fingerprint: ''
+  flow: ''
+  grpc-opts:
+    grpc-service-name: DarkTeam_VPN
+  mode: ''
+  name: 🇬🇧 UK-vless | 3
   network: grpc
   port: 13039
   server: uk.darkteam.vipt-t.info
+  servername: ''
   tls: false
   type: vless
   udp: false
   uuid: 9db9cb88-d722-459d-8241-fd1d6d8f9688
-  grpc-opts:
-    grpc-service-name: "vless-grpc"
 
 proxy-groups:
 - name: 🚀 节点选择
