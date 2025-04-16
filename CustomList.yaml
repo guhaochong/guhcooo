@@ -1,15 +1,71 @@
-mixed-port: 7890
-allow-lan: false
-mode: Rule
-log-level: info
-ipv6: false
-hosts: null
+mixed-port: 7897
+allow-lan: true
+mode: rule
+global-ua: clash-verge/v2.2.3
+geodata-mode: true
+geodata-loader: standard
+unified-delay: true
+log-level: warning
+ipv6: true
 external-controller: 127.0.0.1:9090
-clash-for-android:
-  append-system-dns: false
-profile:
-  tracing: true
+tcp-concurrent: true
+enable-process: true
+find-process-mode: strict
 global-client-fingerprint: chrome
+keep-alive-interval: 15
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  enable: false
+  device: ClashVergeREV
+  stack: mixed
+  mtu: 1500
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-detect-interface: true
+dns:
+  enable: true
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    - 114.114.114.114
+    - system
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "connect.rom.miui.com"
+    - "+.miwifi.com"
+    - "+.ntp.org"
+    - "+.u-tools.cn"
+    - "+.cfprefer1.xyz"
+    - "+.wetab.link"
+    - "+.tyasaka.xyz"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+    - "localhost.work.weixin.qq.com"
+    - "+.weixin.qq.com"
+    - "+.wechat.com"
+    - "time.windows.com"
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
+    - "+.wpsmail.net"
+    - "+.henzanapp.com"
+    - "+.pconline.com.cn"
+
 proxies:
 - name: 🇺🇸 US-hysteria | 1
   type: hysteria
@@ -22,6 +78,7 @@ proxies:
   skip-cert-verify: true
   up: 11 Mbps
   down: 55 Mbps
+  protocol: udp
 - name: 🇺🇸 US-hysteria | 2
   type: hysteria
   server: 108.181.24.77
@@ -38,122 +95,136 @@ proxies:
   network: grpc
   port: 13039
   server: uk.darkteam.vipt-t.info
-  servername: ''
   tls: false
   type: vless
   udp: false
   uuid: 9db9cb88-d722-459d-8241-fd1d6d8f9688
+  grpc-opts:
+    grpc-service-name: "vless-grpc"
 
 proxy-groups:
-  - name: 🚀 节点选择
-    type: select
-    proxies:
-      - ♻️ 自动选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: ♻️ 自动选择
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies: []
-    include-all: true
-  
-  - name: 🔓 自我选择
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: 📺 巴哈姆特
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: 📺 哔哩哔哩
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-    include-all: true
-  
-  - name: 🌏 国内媒体
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-    include-all: true
-  
-  - name: 🌍 国外媒体
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: 📲 电报信息
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: Ⓜ️ 微软云盘
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-    include-all: true
-  
-  - name: Ⓜ️ 微软服务
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - 🚀 节点选择
-    include-all: true
-  
-  - name: 🍎 苹果服务
-    type: select
-   proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-   include-all: true
-  
-  - name: 📢 谷歌FCM
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: 🤖 OpenAI
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
-  
-  - name: 🎯 全球直连
-    type: select
-    proxies:
-      - DIRECT
-
-  - name: 🛑 全球拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
-
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - 🚀 节点选择
-      - 🎯 全球直连
-    include-all: true
+- name: 🚀 节点选择
+  type: select
+  proxies:
+    - ♻️ 自动选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: ♻️ 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🔓 自我选择
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 📺 巴哈姆特
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 📺 哔哩哔哩
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🌏 国内媒体
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🌍 国外媒体
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 📲 电报信息
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: Ⓜ️ 微软云盘
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: Ⓜ️ 微软服务
+  type: select
+  proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🍎 苹果服务
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 📢 谷歌FCM
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🤖 OpenAI
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
+- name: 🎯 全球直连
+  type: select
+  proxies:
+    - DIRECT
+- name: 🛑 全球拦截
+  type: select
+  proxies:
+    - REJECT
+    - DIRECT
+- name: 🐟 漏网之鱼
+  type: select
+  proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    - 🇺🇸 US-hysteria | 1
+    - 🇺🇸 US-hysteria | 2
+    - 🇬🇧 UK-vless | 3
   
 rules:
 - DOMAIN,gemini.google.com,🔓 自我选择
