@@ -13,6 +13,13 @@ proxy-providers:
     # interval: 21600  # 手动更新
     override:
       additional-prefix: "2-节点组|"
+  3.NoMoreWalls 节点:
+    type: http
+    path: ./proxy_provider/list.meta.yml
+    url: https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.meta.yml
+    # interval: 21600  # 手动更新
+    override:
+      additional-prefix: "3-节点组|"
 
 mixed-port: 7897
 allow-lan: true
