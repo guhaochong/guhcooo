@@ -1,0 +1,10 @@
+
+  name: 2|🇬🇧3 |  5.1MB/s
+  network: grpc
+  port: 13039
+  server: uk.darkteam.vipt-t.info
+  servername: ''
+  tls: false
+  type: vless
+  udp: false
+  uuid: 9db9cb88-d722-459d-8241-fd1d6d8f9688
