@@ -45,113 +45,113 @@ proxies:
   uuid: 9db9cb88-d722-459d-8241-fd1d6d8f9688
 
 proxy-groups:
-- name: 🚀 节点选择
-  type: select
-  proxies:
-  - ♻️ 自动选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+    - ♻️ 自动选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: ♻️ 自动选择
-  type: url-test
-  url: http://www.gstatic.com/generate_204
-  interval: 300
-  tolerance: 50
-  proxies:
-  include-all: true
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies:
+    include-all: true
   
   - name: 🔓 自我选择
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: 📺 巴哈姆特
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 📺 巴哈姆特
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: 📺 哔哩哔哩
-  type: select
-  proxies:
-  - 🎯 全球直连
-  - 🚀 节点选择
-  include-all: true
+  - name: 📺 哔哩哔哩
+    type: select
+    proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    include-all: true
   
-- name: 🌏 国内媒体
-  type: select
-  proxies:
-  - 🎯 全球直连
-  - 🚀 节点选择
-  include-all: true
+  - name: 🌏 国内媒体
+    type: select
+    proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    include-all: true
   
-- name: 🌍 国外媒体
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: 📲 电报信息
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 📲 电报信息
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: Ⓜ️ 微软云盘
-  type: select
-  proxies:
-  - 🎯 全球直连
-  - 🚀 节点选择
-  include-all: true
+  - name: Ⓜ️ 微软云盘
+    type: select
+    proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    include-all: true
   
-- name: Ⓜ️ 微软服务
-  type: select
-  proxies:
-  - 🎯 全球直连
-  - 🚀 节点选择
-  include-all: true
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+    - 🎯 全球直连
+    - 🚀 节点选择
+    include-all: true
   
-- name: 🍎 苹果服务
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 🍎 苹果服务
+    type: select
+   proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+   include-all: true
   
-- name: 📢 谷歌FCM
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 📢 谷歌FCM
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: 🤖 OpenAI
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 🤖 OpenAI
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
-- name: 🎯 全球直连
-  type: select
-  proxies:
-  - DIRECT
-- name: 🛑 全球拦截
-  type: select
-  proxies:
-  - REJECT
-  - DIRECT
-- name: 🐟 漏网之鱼
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - 🎯 全球直连
-  include-all: true
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+    - DIRECT
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+    - REJECT
+    - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - 🎯 全球直连
+    include-all: true
   
 rules:
 - DOMAIN,gemini.google.com,🔓 自我选择
